@@ -1,17 +1,61 @@
-<h2>Rectangle Creator</h2>
-<p>Count: <input id="count" value="5"></p>
-<button id="create">Create</button>
-<button id="cancel">Cancel</button>
+<div class="icon-holder">
+  <ul class="icon">
+    <li id="icon-watch-later" onclick="copyIconToFigmaFrame('icon-watch-later')">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M16.2188 16.2188L17.0156 14.9062L12.5156 12.1875V6.98438H11.0156V12.9844L16.2188 16.2188ZM4.92188 4.96875C6.89062 3 9.25 2.01562 12 2.01562C14.75 2.01562 17.0938 3 19.0312 4.96875C21 6.90625 21.9844 9.25 21.9844 12C21.9844 14.75 21 17.1094 19.0312 19.0781C17.0938 21.0156 14.75 21.9844 12 21.9844C9.25 21.9844 6.89062 21.0156 4.92188 19.0781C2.98438 17.1094 2.01562 14.75 2.01562 12C2.01562 9.25 2.98438 6.90625 4.92188 4.96875Z"
+          fill="black"
+        />
+      </svg>
+    </li>
+
+    <li id="icon-vibration" onclick="copyIconToFigmaFrame('icon-vibration')">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g id="vibration">
+          <path
+            id="vibration_2"
+            d="M15.9844 18.9844V5.01562H8.01562V18.9844H15.9844ZM16.5 3C16.9375 3 17.2969 3.14062 17.5781 3.42188C17.8594 3.70312 18 4.0625 18 4.5V19.5C18 19.9375 17.8594 20.2969 17.5781 20.5781C17.2969 20.8594 16.9375 21 16.5 21H7.5C7.0625 21 6.70312 20.8594 6.42188 20.5781C6.14062 20.2969 6 19.9375 6 19.5V4.5C6 4.0625 6.14062 3.70312 6.42188 3.42188C6.70312 3.14062 7.0625 3 7.5 3H16.5ZM18.9844 17.0156V6.98438H21V17.0156H18.9844ZM21.9844 9H24V15H21.9844V9ZM3 17.0156V6.98438H5.01562V17.0156H3ZM0 15V9H2.01562V15H0Z"
+            fill="black"
+          />
+        </g>
+      </svg>
+    </li>
+
+    <li id="icon-filter-alt" onclick="copyIconToFigmaFrame('icon-filter-alt')">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g id="filter_alt">
+          <path
+            id="Vector"
+            d="M6.99993 7H16.9999L11.9899 13.3L6.99993 7ZM4.24993 6.61C6.26993 9.2 9.99993 14 9.99993 14V20C9.99993 20.55 10.4499 21 10.9999 21H12.9999C13.5499 21 13.9999 20.55 13.9999 20V14C13.9999 14 17.7199 9.2 19.7399 6.61C20.2499 5.95 19.7799 5 18.9499 5H5.03993C4.20993 5 3.73993 5.95 4.24993 6.61Z"
+            fill="black"
+          />
+        </g>
+      </svg>
+    </li>
+  </ul>
+</div>
+
 <script>
-
-document.getElementById('create').onclick = () => {
-  const textbox = document.getElementById('count');
-  const count = parseInt(textbox.value, 10);
-  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
-}
-
-document.getElementById('cancel').onclick = () => {
-  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
-}
-
+    function copyIconToFigmaFrame(param){
+      var svgCode = document.getElementById(param).innerHTML;
+      parent.postMessage({ pluginMessage: { type: "create-icons", svgCode } }, "*");
+    }
 </script>
